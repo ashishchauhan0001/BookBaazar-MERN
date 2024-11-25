@@ -10,7 +10,7 @@ services:
     networks:
       - bookbaazar-network
     environment:
-      MONGO_URI: mongodb+srv://Ashish:Ashish123@cluster0.jwn4rxf.mongodb.net/ 
+      MONGO_URI: xyzValue
     depends_on:
       - mongodb
 
