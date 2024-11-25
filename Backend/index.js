@@ -1,7 +1,7 @@
 import express from "express"
 import dotenv from "dotenv"
 import mongoose from "mongoose";
-import bookRoute from "../Backend/route/book.route.js"
+import bookRoute from "./route/book.route.js"
 import cors from "cors"
 import userRoute from "./route/user.route.js"
 
@@ -13,7 +13,7 @@ app.use(express.json()); // json me parsing
 
 dotenv.config();
 
-const PORT=process.env.PORT||4000
+const PORT=process.env.PORT||5050
 const URI=process.env.MongoDBURI;
 // we are using "nodemon" instead of "node" in dependencies bcz it provides real time change refelection on the server without being restart
 

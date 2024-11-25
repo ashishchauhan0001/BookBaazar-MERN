@@ -1,0 +1,44 @@
+version: "3.8"
+
+services:
+  backend:
+    build:
+      context: ./BOOKBAAZAR/Backend
+      dockerfile: Dockerfile
+    ports:
+      - "5050:5050"
+    networks:
+      - bookbaazar-network
+    environment:
+      MONGO_URI: mongodb+srv://Ashish:Ashish123@cluster0.jwn4rxf.mongodb.net/ 
+    depends_on:
+      - mongodb
+
+  frontend:
+    build:
+      context: ./BOOKBAAZAR/Frontend
+      dockerfile: Dockerfile
+    ports:
+      - "5173:5173"
+    networks:
+      - bookbaazar-network
+    environment:
+      REACT_APP_API_URL: http://backend:5050 
+
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb
+    ports:
+      - "27017:27017"
+    networks:
+      - bookbaazar-network
+    volumes:
+      - mongo-data:/data/db
+
+networks:
+  mern_network:
+    driver: bridge
+
+volumes:
+  mongo-data:
+    driver: local
